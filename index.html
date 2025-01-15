@@ -742,48 +742,49 @@ faq section start
           </div>
           <div class="col-lg-8 col-md-7">
             <div class="contact-form">
-              <form action="https://api.web3forms.com/submit" method="POST">
-                <div class="row">
-                  <div class="col-lg-6">
-                    <div class="form-group">
-                      <input type="hidden" name="access_key" value="518ef1d1-beac-47e4-b6b1-1ad93f2d763a">
-                      <input type="text" placeholder="Your Name" class="form-control">
-                    </div>
-                  </div>
-                  <div class="col-lg-6">
-                    <div class="form-group">
-                      <input type="email" placeholder="Your Email" class="form-control">
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-lg-12">
-                    <div class="form-group">
-                      <input type="text" placeholder="Your Phone" class="form-control">
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-lg-12">
-                    <div class="form-group">
-                      <input type="text" placeholder="Subject" class="form-control">
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-lg-12">
-                    <div class="form-group">
-                     <textarea name="" placeholder="You Message" id="" class="form-control"></textarea>
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-lg-12">
-                    <button class="btn-2" type="button">Message Me</button>
-                  </div>
-                </div>
-              </form>
-            </div>
+  <form action="https://api.web3forms.com/submit" method="POST">
+    <input type="hidden" name="access_key" value="518ef1d1-beac-47e4-b6b1-1ad93f2d763a" />
+
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="form-group">
+          <input type="text" name="name" placeholder="Your Name" class="form-control" required />
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="form-group">
+          <input type="email" name="email" placeholder="Your Email" class="form-control" required />
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="form-group">
+          <input type="text" name="phone" placeholder="Your Phone" class="form-control" />
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="form-group">
+          <input type="text" name="subject" placeholder="Subject" class="form-control" />
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="form-group">
+          <textarea name="message" placeholder="Your Message" class="form-control" required></textarea>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <button class="btn-2" type="submit">Message Me</button>
+      </div>
+    </div>
+  </form>
+</div>
           </div>
         </div>
        </div>
