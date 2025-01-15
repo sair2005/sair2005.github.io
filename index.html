@@ -741,8 +741,8 @@ faq section start
             </div>
           </div>
           <div class="col-lg-8 col-md-7">
-            <div class="contact-form">
-  <form action="https://api.web3forms.com/submit" method="POST">
+           <div class="contact-form">
+  <form id="contactForm" action="https://api.web3forms.com/submit" method="POST">
     <input type="hidden" name="access_key" value="518ef1d1-beac-47e4-b6b1-1ad93f2d763a" />
 
     <div class="row">
@@ -784,7 +784,37 @@ faq section start
       </div>
     </div>
   </form>
+
+  <!-- Success Message -->
+  <div id="successMessage" style="display: none; margin-top: 20px;">
+    <p style="color: green; font-weight: bold;">Thank you for your message! We will get back to you soon.</p>
+  </div>
 </div>
+
+<script>
+  document.getElementById("contactForm").addEventListener("submit", function (event) {
+    event.preventDefault(); // Prevent default form submission
+    const form = event.target;
+
+    // Send the form data using Fetch API
+    fetch(form.action, {
+      method: form.method,
+      body: new FormData(form),
+    })
+      .then((response) => {
+        if (response.ok) {
+          document.getElementById("successMessage").style.display = "block"; // Show success message
+          form.reset(); // Clear the form
+        } else {
+          alert("There was an error submitting the form. Please try again.");
+        }
+      })
+      .catch(() => {
+        alert("There was an error submitting the form. Please try again.");
+      });
+  });
+</script>
+
           </div>
         </div>
        </div>
