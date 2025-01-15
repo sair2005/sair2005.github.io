@@ -1,87 +1,73 @@
-$(document).ready(function()
-{
-    // navbar shrink
-    $(window).on("scroll",function()
-    {
-        if($(this).scrollTop() > 90)
-        {
-            $(".navbar").addClass("navbar-shrink");
-        }
-        else
-        {
-            $(".navbar").removeClass("navbar-shrink");
-        }
-    })
-    // parallax js
-    function parallaxMouse()
-    {
-        if($('#parallax').length)
-        {
-            var scene = document.getElementById('parallax');
-            var parallax = new Parallax(scene);
-        }
+$(document).ready(function() {
+    // Debounce Function
+    function debounce(func, wait) {
+        let timeout;
+        return function(...args) {
+            clearTimeout(timeout);
+            timeout = setTimeout(() => func.apply(this, args), wait);
+        };
     }
-    parallaxMouse();
-    // skills bar
-    $(window).scroll(function()
-    {
-        var hT = $("#skill-bar-wrapper").offset().top,
-        hH = $("#skill-bar-wrapper").outerHeight(),
-        wH = $(window).height(),
-        wS = $(this).scrollTop();
-        if( wS > (hT+hH-1.4*wH))
-        {
-            jQuery('.skillbar-container').each(function()
-            {
-                jQuery(this).find('.skills').animate({
-                    width:jQuery(this).attr('data-percent')
-                }, 5000) // 5 seconds
-            })
+
+    // Navbar shrink
+    $(window).on("scroll", debounce(function() {
+        $(".navbar").toggleClass("navbar-shrink", $(this).scrollTop() > 90);
+    }, 100));
+
+    // Parallax Effect
+    if ($('#parallax').length) {
+        new Parallax(document.getElementById('parallax'));
+    }
+
+    // Skills bar
+    $(window).on("scroll", debounce(function() {
+        let $skillWrapper = $("#skill-bar-wrapper");
+        if (!$skillWrapper.length) return;
+
+        let hT = $skillWrapper.offset().top,
+            hH = $skillWrapper.outerHeight(),
+            wH = $(window).height(),
+            wS = $(this).scrollTop();
+
+        if (wS > (hT + hH - 1.4 * wH)) {
+            $('.skillbar-container .skills').each(function() {
+                $(this).animate({ width: $(this).data('percent') }, 2000);
+            });
         }
-    })
-    // filter
-    let $btns = $('.img-gallery .sortBtn .filter-btn');
-    $btns.click(function(e) {
-        $('.img-gallery .sortBtn .filter-btn').removeClass('active');
-        e.target.classList.add('active');
-        let selector = $(e.target).attr('data-filter');
-        $('.img-gallery .grid').isotope
-        ({
-            filter:selector
-        })
-        return false;
-    })
-    $('.image-popup').magnificPopup
-    ({
+    }, 100));
+
+    // Filter buttons
+    $('.img-gallery .sortBtn .filter-btn').on("click", function(e) {
+        e.preventDefault();
+        let selector = $(this).data('filter');
+        $('.img-gallery .grid').isotope({ filter: selector });
+        $(this).addClass('active').siblings().removeClass('active');
+    });
+
+    // Magnific Popup
+    $('.image-popup').magnificPopup({
         type: 'image',
-        gallery: { enabled: true}
-    })
-    // owl carousel
+        gallery: { enabled: true }
+    });
+
+    // Owl Carousel
     $('.testimonial-slider').owlCarousel({
-        loop:true,
-        margin:0,
-        responsiveClass:true,
-        autoplay:true,
-        responsive:{
-            0:{
-                items:1,
-            },
-            600:{
-                items:2,
-            },
-            1000:{
-                items:3,
-            }
+        loop: true,
+        margin: 0,
+        autoplay: true,
+        responsive: {
+            0: { items: 1 },
+            600: { items: 2 },
+            1000: { items: 3 }
         }
-    })
-    // navbar collapse 
-    $(".nav-link").on("click",function()
-    {
+    });
+
+    // Navbar collapse on click
+    $(".nav-link").on("click", function() {
         $(".navbar-collapse").collapse("hide");
-    })
-    // scroll
+    });
+
+    // Smooth scrolling
     $.scrollIt({
-        topOffset:-50
-    })
-    
-})
+        topOffset: -50
+    });
+});
