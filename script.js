@@ -152,7 +152,7 @@ updateDateTime(); // Initial call
 
 // Typewriter Effect
 const typingText = document.querySelector('.typing-text');
-const roles = ['Web Developer', 'Graphic Designer', 'Java Developer', '.NET Developer'];
+const roles = ['Web Developer', 'Graphic Designer', 'Java Developer'];
 let roleIndex = 0;
 let charIndex = 0;
 let isDeleting = false;
