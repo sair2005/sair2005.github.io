@@ -193,3 +193,23 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+const likeBtn = document.getElementById("likeBtn");
+const likes = document.getElementById("likes");
+
+let liked = false;
+let count = 248;
+
+likeBtn.addEventListener("click", () => {
+
+    if(!liked){
+        count++;
+        likeBtn.innerHTML = `💙 <span id="likes">${count}</span> Liked`;
+        liked = true;
+    }else{
+        count--;
+        likeBtn.innerHTML = `❤️ <span id="likes">${count}</span> Likes`;
+        liked = false;
+    }
+
+});
